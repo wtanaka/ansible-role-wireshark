@@ -1,0 +1,19 @@
+---
+- include: compat.yml
+
+- include: include_vars.yml
+
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=648654
+# https://github.com/docker/docker/issues/6980
+# Confirmed affects Fedora 20 and CentOS 7 on CircleCI
+- include: install_package_names.yml
+  when: >
+    not (is_integration_test is defined and is_integration_test and
+    ansible_os_family == "RedHat")
+
