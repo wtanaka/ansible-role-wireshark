@@ -1,11 +1,8 @@
----
 language: ruby
 rvm:
-  - 1.9.3
-
+- 1.9.3
 services:
-  - docker
-
+- docker
 script:
   - >
     wget -O- bit.ly/ansibletest | env
@@ -13,9 +10,8 @@ script:
     sh -x
 
 after_failure:
-  - cat role-tester-ansible-master/.kitchen.yml
-  - cat role-tester-ansible-master/.kitchen.local.yml
-  - cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
-
+- cat role-tester-ansible-master/.kitchen.yml
+- cat role-tester-ansible-master/.kitchen.local.yml
+- cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
