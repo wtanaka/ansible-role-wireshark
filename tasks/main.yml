@@ -3,9 +3,6 @@
 
 - include: include_vars.yml
 
-- include: Debian.yml
-  when: ansible_os_family == 'Debian'
-
 - include: RedHat.yml
   when: ansible_os_family == 'RedHat'
 
